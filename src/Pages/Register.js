@@ -13,7 +13,7 @@ export default function Register () {
     }
 
     function badRegister () {
-        alert("Falha no cadastro, tente novamente.");
+        alert("Falha no cadastro, favor tentar novamente.");
         setRegister({email: "", name: "", cpf: "", password: ""});
     }
 
