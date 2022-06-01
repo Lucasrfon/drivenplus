@@ -16,7 +16,7 @@ export default function App () {
                 <Routes>
                     <Route path="/" element={<Login />} />
                     <Route path="/sign-up" element={<Register />} />
-                    <Route path="/subscriptions" element={<Subscriptions />} />
+                    <Route path="/subscriptions/:idSubscription" element={<Subscriptions />} />
                     <Route path="/home" element={<Home />} />
                 </Routes>
             </TokenContext.Provider>

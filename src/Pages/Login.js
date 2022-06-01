@@ -16,7 +16,7 @@ export default function Login () {
     }
 
     function goodLogin (e) {
-        setToken(e.data.token);
+        setToken({headers: {Authorization: `Bearer ${e.data.token}`}});
         e.data.membership ? navigate("/home") : navigate("/subscriptions");
     }
 
