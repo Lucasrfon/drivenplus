@@ -4,11 +4,13 @@ import axios from "axios";
 import styled from "styled-components";
 import logo from "../Images/logo.svg";
 import TokenContext from "../Contexts/TokenContext";
+import MemberContext from "../Contexts/MemberContext";
 
 export default function Login () {
     const navigate = useNavigate();
     const [login, setLogin] = useState({email: "dh5v@gmail.com", password: "123"});
     const { setToken } = useContext(TokenContext);
+    const { setMember } = useContext(MemberContext);
 
     function sentRequest (event) {
         event.preventDefault();
@@ -17,6 +19,7 @@ export default function Login () {
 
     function goodLogin (e) {
         setToken({headers: {Authorization: `Bearer ${e.data.token}`}});
+        setMember({...e.data});
         e.data.membership ? navigate("/home") : navigate("/subscriptions");
     }
 
