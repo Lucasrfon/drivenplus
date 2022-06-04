@@ -2,11 +2,11 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import TokenContext from "../Contexts/TokenContext"
+import TokenContext from "../Contexts/TokenContext";
 
 export default function Subscriptions () {
     const { token } = useContext(TokenContext);
-    const [plans, setPlans] = useState([])
+    const [plans, setPlans] = useState([]);
 
     useEffect(() => {axios.get('https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships', token).then((e) => setPlans(e.data))}, []);
 
@@ -33,6 +33,7 @@ const Container = styled.div`
     align-items: center;
     min-height: 100vh;
     font-size: 14px;
+    font-weight: 700;
 
 h1 {
     color: white;

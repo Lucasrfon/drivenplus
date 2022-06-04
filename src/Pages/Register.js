@@ -9,12 +9,7 @@ export default function Register () {
 
     function sentRequest (event) {
         event.preventDefault();
-        axios.post('https://mock-api.driven.com.br/api/v4/driven-plus/auth/sign-up', register).then(() => navigate("/")).catch(badRegister);
-    }
-
-    function badRegister () {
-        alert("Falha no cadastro, favor tentar novamente.");
-        setRegister({email: "", name: "", cpf: "", password: ""});
+        axios.post('https://mock-api.driven.com.br/api/v4/driven-plus/auth/sign-up', register).then(() => navigate("/")).catch(() => alert("Falha no cadastro, favor verificar e tentar novamente."));
     }
 
     return (
@@ -64,6 +59,7 @@ button {
     height: 52px;
     width: 300px;
     margin-top: 8px;
+    font-weight: 700;
 }
 
 p {

@@ -77,6 +77,7 @@ button {
     height: 52px;
     width: 300px;
     margin-top: 8px;
+    font-weight: 700;
 }
 
 p {
