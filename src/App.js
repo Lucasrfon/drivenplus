@@ -16,7 +16,7 @@ import Update from './Pages/Update';
 export default function App () {
     const [token, setToken] = useState("");
     const [member, setMember] = useState({});
-    const [login, setLogin] = useState({email: "dh5v@gmail.com", password: "123"});
+    const [login, setLogin] = useState({email: "", password: ""});
     
     return (
         <BrowserRouter>
