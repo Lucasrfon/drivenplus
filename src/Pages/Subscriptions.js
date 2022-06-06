@@ -17,7 +17,7 @@ export default function Subscriptions () {
                 <Link to={`/subscriptions/${a.id}`} key={a.id} style={{ textDecoration: 'none' }}>
                     <div>
                         <img src={a.image} alt={`plano ${a.id}`} />
-                        <span>R$ {a.price}</span>
+                        <span>R$ {a.price.replace(".", ",")}</span>
                     </div>
                 </Link>
             )}

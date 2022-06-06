@@ -50,7 +50,9 @@ export default function Subscription() {
             <h1>{subscription.name}</h1>
             <Description>
                 <h3><img src={clipBoard} alt="->" /> Benefícios:</h3>
-                {perks.map((a) => <p key={a.id}>{a.id}. {a.title}</p>)}
+                {perks.map((a, index) => 
+                    <p key={a.id}>{index + 1}. {a.title === "Solicitar brindes" ? "Brindes exclusivos" : a.title}</p>
+                )}
                 <h3><img src={cash} alt="->" /> Preço:</h3>
                 <p>R$ {subscription.price} cobrados mensalmente</p>
             </Description>
@@ -67,7 +69,7 @@ export default function Subscription() {
                     <div>
                         <p>Tem certeza que deseja</p>
                         <p>assinar o plano</p>
-                        <p>{subscription.name} (R$ {subscription.price})?</p>
+                        <p>{subscription.name} (R$ {subscription.price.replace(".", ",")})?</p>
                         <button onClick={() => setConfirm(false)}>Não</button>
                         <button onClick={buySubscription}>SIM</button>
                     </div>
