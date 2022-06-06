@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect } from "react"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import LoginContext from "../Contexts/LoginContext";
 import MemberContext from "../Contexts/MemberContext"
@@ -23,7 +23,9 @@ export default function Home () {
             <div>
                 <Topo>
                     <img src={member.membership.image} alt={member.membership.name}/>
-                    <ion-icon name="person-circle"></ion-icon>
+                    <Link to={`/users/${member.id}`}>
+                        <ion-icon name="person-circle"></ion-icon>
+                    </Link>
                 </Topo>
                 <h1>Olá, {member.name}</h1>
                 <Perks>
@@ -61,6 +63,7 @@ img {
 
 ion-icon {
     font-size: 40px;
+    color: white;
 }
 
 h1 {

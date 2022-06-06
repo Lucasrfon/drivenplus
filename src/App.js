@@ -10,11 +10,12 @@ import Register from './Pages/Register';
 import Subscriptions from './Pages/Subscriptions';
 import Subscription from './Pages/Subscription';
 import Home from './Pages/Home';
+import User from './Pages/User';
 
 export default function App () {
     const [token, setToken] = useState("");
     const [member, setMember] = useState({});
-    const [login, setLogin] = useState({email: "", password: ""});
+    const [login, setLogin] = useState({email: "dh5v@gmail.com", password: "123"});
     
     return (
         <BrowserRouter>
@@ -27,6 +28,7 @@ export default function App () {
                     <Route path="/subscriptions" element={<Subscriptions />} />
                     <Route path="/subscriptions/:idSubscription" element={<Subscription />} />
                     <Route path="/home" element={<Home />} />
+                    <Route path='/users/:idUser' element={<User />} />
                 </Routes>
             </LoginContext.Provider>
             </MemberContext.Provider>
