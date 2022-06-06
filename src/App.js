@@ -11,6 +11,7 @@ import Subscriptions from './Pages/Subscriptions';
 import Subscription from './Pages/Subscription';
 import Home from './Pages/Home';
 import User from './Pages/User';
+import Update from './Pages/Update';
 
 export default function App () {
     const [token, setToken] = useState("");
@@ -29,6 +30,7 @@ export default function App () {
                     <Route path="/subscriptions/:idSubscription" element={<Subscription />} />
                     <Route path="/home" element={<Home />} />
                     <Route path='/users/:idUser' element={<User />} />
+                    <Route path='/users/:idUser/update' element={<Update />} />
                 </Routes>
             </LoginContext.Provider>
             </MemberContext.Provider>
