@@ -3,12 +3,16 @@ import { useContext, useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import TokenContext from "../Contexts/TokenContext";
+import MemberContext from "../Contexts/MemberContext";
+import LoginContext from "../Contexts/LoginContext";
 import close from "../Images/close.png";
 import cash from "../Images/cash.png";
 import clipBoard from "../Images/clipBoard.png";
 
 export default function Subscription() {
     const { token } = useContext(TokenContext);
+    const { setMember } = useContext(MemberContext);
+    const { login } = useContext(LoginContext);
     const { idSubscription } = useParams();
     const [subscription, setSubscription] = useState([]);
     const [perks, setPerks] = useState([]);
@@ -36,7 +40,16 @@ export default function Subscription() {
             cardNumber: buyerTicket.card,
             securityNumber: buyerTicket.cvv,
             expirationDate: buyerTicket.valid
-        }, token).then(() => navigate("/home")).catch(() => alert("Dados inválidos, favor verificar e tentar novamente."));
+        }, token).then(prepareNavigate).catch(() => alert("Dados inválidos, favor verificar e tentar novamente."));
+    }
+
+    function prepareNavigate() {
+        axios.post('https://mock-api.driven.com.br/api/v4/driven-plus/auth/login', login).then((e) => actuallyNavigate(e))
+    }
+
+    function actuallyNavigate(e) {
+        setMember({...e.data});
+        navigate("/home");
     }
 
     return (
