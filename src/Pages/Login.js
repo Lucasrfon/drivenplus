@@ -1,14 +1,15 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import logo from "../Images/logo.svg";
 import TokenContext from "../Contexts/TokenContext";
 import MemberContext from "../Contexts/MemberContext";
+import LoginContext from "../Contexts/LoginContext";
 
 export default function Login () {
     const navigate = useNavigate();
-    const [login, setLogin] = useState({email: "dh5v@gmail.com", password: "123"});
+    const { login, setLogin } = useContext(LoginContext);
     const { setToken } = useContext(TokenContext);
     const { setMember } = useContext(MemberContext);
 

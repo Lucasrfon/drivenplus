@@ -1,14 +1,18 @@
 import axios from "axios";
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import LoginContext from "../Contexts/LoginContext";
 import MemberContext from "../Contexts/MemberContext"
 import TokenContext from "../Contexts/TokenContext";
 
 export default function Home () {
+    const { login } = useContext(LoginContext);
     const { member, setMember } = useContext(MemberContext);
     const { token } = useContext(TokenContext);
     const navigate = useNavigate();
+
+    useEffect(() => {axios.post('https://mock-api.driven.com.br/api/v4/driven-plus/auth/login', login).then((e) => setMember(e.data))}, [])
 
     function cancelSubscription () {
         axios.delete('https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions', token).then(() => navigate("/subscriptions"));
